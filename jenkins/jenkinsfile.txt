@@ -13,6 +13,6 @@ node {
    }
    stage('Results') {
       echo 'Hello world'
-      junit '**/TEST-LibraryTest.xml'
+      step([$class: 'Publisher', reportFilenamePattern: '**/TEST-LibraryTest.xml'])
    }
 }
