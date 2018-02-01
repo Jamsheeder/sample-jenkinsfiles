@@ -13,5 +13,8 @@ node {
    }
    stage('Results') {
       echo 'Hello world'
+      always {
+      	step([$class: 'Publisher', reportFilenamePattern: 'build/test-results/*.xml'])
+      }
    }
 }
