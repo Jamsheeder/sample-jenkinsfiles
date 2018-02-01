@@ -13,8 +13,6 @@ node {
    }
    stage('Results') {
       echo 'Hello world'
-      always {
-      	junit '**/TEST-LibraryTest.xml'
-      }
+      junit '**/TEST-LibraryTest.xml'
    }
 }
