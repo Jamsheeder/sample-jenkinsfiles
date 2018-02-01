@@ -13,6 +13,6 @@ node {
    }
    stage('Results') {
       echo 'Hello world'
-      step([$class: 'Publisher', reportFilenamePattern: '**/TEST-LibraryTest.xml'])
+      step([$class: 'Publisher', reportFilenamePattern: '**/testng-results'])
    }
 }
