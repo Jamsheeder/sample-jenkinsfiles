@@ -33,13 +33,14 @@ def excludedGroups="broken,disabled"
 def includedGroups=""
 
 test {
-    useTestNG() {
-       useDefaultListeners = true
+    useTestNG() 
+    
+    options {
+      listeners = listeners << 'org.testng.reporters.XMLReporter'
     }
-
+    
     //Disable the default groovy html reports since ReportNG is being used
-    reports.html.enabled = false
-    //reports.xml.enabled = true
+    //reports.html.enabled = false
 
     //Interceptors
     beforeTest { desc ->
