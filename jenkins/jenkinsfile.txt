@@ -7,12 +7,13 @@ pipeline {
 	      steps {
 		      // Get some code from a GitHub repository
 		      git 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
-		      varIsUnix = isUnix()
-		      echo "Is Unix: ${varIsUnix}"
 		  }
 	   }
 	   stage('Build') {
 	   
+	      when {
+	          expression { isUnix() == false }
+	      }
 	      steps {
 		         bat "./gradlew clean build"
 		  }
