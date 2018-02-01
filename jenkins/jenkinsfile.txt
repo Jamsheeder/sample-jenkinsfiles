@@ -11,14 +11,20 @@ pipeline {
 	   }
 	   stage('Build') {
 	   
+	      when {
+	      	  expression{ isUnix() == 'true' }
+	      }
 	      steps {
-		      // Run the gradle build
-		      if (isUnix()) {
 		         sh "./gradlew clean build"
-		      } else {
-		         bat 'gradlew clean build'
-		      }
 		  }
+		  
+	      when {
+	      	  expression{ isUnix() == 'false' }
+	      }
+	      steps {
+		         bat "./gradlew clean build"
+		  }
+		  
 	   }
 	}
 	post {
