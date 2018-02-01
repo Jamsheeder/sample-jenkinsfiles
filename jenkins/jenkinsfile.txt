@@ -23,6 +23,7 @@ pipeline {
 		         bat "set"
 		         echo 'SamParam'
 		         echo "${params.SamParam}"
+		         echo "${SamParam}"
 		         echo "${SAM_SAMPARAM}"
 		         echo "${env.SAM_SAMPARAM}"
 		  }
