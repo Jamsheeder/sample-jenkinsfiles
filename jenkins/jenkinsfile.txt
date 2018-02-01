@@ -1,0 +1,17 @@
+node {
+   stage('Preparation') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/jabedhasan21/java-hello-world-with-gradle.git'
+   }
+   stage('Build') {
+      // Run the gradle build
+      if (isUnix()) {
+         sh "./gradlew clean build"
+      } else {
+         bat 'gradlew clean build'
+      }
+   }
+   stage('Results') {
+      echo 'Hello world'
+   }
+}
