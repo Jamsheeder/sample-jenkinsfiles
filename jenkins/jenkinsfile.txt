@@ -1,18 +1,27 @@
-node {
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
-   }
-   stage('Build') {
-      // Run the gradle build
-      if (isUnix()) {
-         sh "./gradlew clean build"
-      } else {
-         bat 'gradlew clean build'
-      }
-   }
-   stage('Results') {
-      echo 'Hello world'
-      step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
-   }
+pipeline {
+	agent master
+
+	stages {
+	   stage('Preparation') { // for display purposes
+	      // Get some code from a GitHub repository
+	      git 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
+	   }
+	   stage('Build') {
+	      // Run the gradle build
+	      if (isUnix()) {
+	         sh "./gradlew clean build"
+	      } else {
+	         bat 'gradlew clean build'
+	      }
+	   }
+	}
+	post {
+	  always {
+	      echo 'post -> always'
+	      step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
+	  }
+	  failure {
+	      echo 'post -> failure'
+	  }
+    }
 }
