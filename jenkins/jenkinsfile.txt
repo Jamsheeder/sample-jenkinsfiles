@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 
+    environment {
+        SAM_SAMPARAM = "${params.SamParam}"
+    }
+
 	stages {
 	   stage('Preparation') { // for display purposes
 	   
@@ -19,6 +23,8 @@ pipeline {
 		         bat "set"
 		         echo 'SamParam'
 		         echo "${params.SamParam}"
+		         echo "${SAM_SAMPARAM}"
+		         echo "${env.SAM_SAMPARAM}"
 		  }
 		  
 	   }
