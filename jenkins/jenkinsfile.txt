@@ -14,7 +14,7 @@ node {
    stage('Results') {
       echo 'Hello world'
       always {
-      	junit 'build/test-results/**/*.xml'
+      	junit '**/TEST-LibraryTest.xml'
       }
    }
 }
