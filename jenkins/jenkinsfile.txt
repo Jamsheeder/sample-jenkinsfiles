@@ -1,10 +1,6 @@
 pipeline {
 	agent any
 
-    environment {
-        SAM_SAMPARAM = "${params.SamParam}"
-    }
-
 	stages {
 	   stage('Preparation') { // for display purposes
 	   
@@ -20,23 +16,20 @@ pipeline {
 	      }
 	      steps {
 		         bat "./gradlew clean build"
-		         bat "set"
-		         echo 'SamParam'
-		         echo "${params.SamParam}"
-		         echo "${SamParam}"
-		         echo "${SAM_SAMPARAM}"
-		         echo "${env.SAM_SAMPARAM}"
+		         bat '''
+                     echo 'Multiline'
+                     echo 'Example'
+                 '''
 		  }
 		  
 	   }
 	}
 	post {
 	  always {
-	      echo 'post -> always'
 	      step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
 	  }
 	  failure {
-	      echo 'post -> failure'
+	      echo 'TODO: Sending email on error'
 	  }
     }
 }
