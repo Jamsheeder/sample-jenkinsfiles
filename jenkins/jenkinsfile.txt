@@ -1,7 +1,7 @@
 node {
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.com/jabedhasan21/java-hello-world-with-gradle.git'
+      git 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
    }
    stage('Build') {
       // Run the gradle build
