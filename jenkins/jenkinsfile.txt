@@ -12,13 +12,6 @@ pipeline {
 	   stage('Build') {
 	   
 	      when {
-	      	  expression{ isUnix() == 'true' }
-	      }
-	      steps {
-		         sh "./gradlew clean build"
-		  }
-		  
-	      when {
 	      	  expression{ isUnix() == 'false' }
 	      }
 	      steps {
