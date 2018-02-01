@@ -1,18 +1,24 @@
 pipeline {
-	agent master
+	agent any
 
 	stages {
 	   stage('Preparation') { // for display purposes
-	      // Get some code from a GitHub repository
-	      git 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
+	   
+	      steps {
+		      // Get some code from a GitHub repository
+		      git 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
+		  }
 	   }
 	   stage('Build') {
-	      // Run the gradle build
-	      if (isUnix()) {
-	         sh "./gradlew clean build"
-	      } else {
-	         bat 'gradlew clean build'
-	      }
+	   
+	      steps {
+		      // Run the gradle build
+		      if (isUnix()) {
+		         sh "./gradlew clean build"
+		      } else {
+		         bat 'gradlew clean build'
+		      }
+		  }
 	   }
 	}
 	post {
