@@ -22,7 +22,6 @@ pipeline {
                      echo 'Multiline'
                      echo 'Example'
                  '''
-                 println "ipconfig".execute().text
 		  }
 		  
 	   }
