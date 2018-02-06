@@ -15,8 +15,10 @@ pipeline {
 	          expression { isUnix() == false }
 	      }
 	      steps {
-		         bat "./gradlew clean build"
+		         bat "gradlew clean build"
 		         bat '''
+                     set
+                     ipconfig
                      echo 'Multiline'
                      echo 'Example'
                  '''
