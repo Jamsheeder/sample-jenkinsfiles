@@ -6,7 +6,7 @@ pipeline {
 	   
 	      steps {
 		      // Get some code from a GitHub repository
-		      git branch: '${Branch}', url: 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
+		      git branch: '${GIT_BRANCH}', url: 'https://github.com/Jamsheeder/sample-jenkinsfiles.git'
 		  }
 	   }
 	   stage('Build') {
