@@ -19,7 +19,7 @@ pipeline {
 		         bat '''
                      set
                      ipconfig
-                     echo 'Multiline - Joerg branch test on %Branch%'
+                     echo 'Multiline - Joerg branch test on %Branch% - %GIT_BRANCH%'
                      echo 'Example'
                  '''
 		  }
